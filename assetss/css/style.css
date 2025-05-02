@@ -2919,13 +2919,16 @@ main[role=progressbar]::before {
   background-image: none;
   background-color: transparent;
 }
-.blog__home .section__title p, .service__home .section__title p {
+.blog__home .section__title p, .service__home .section__title p, .servicePageBorder p {
   border-radius: 23px;
   border: 1px solid #c1ffc4;
   display: inline-block;
   padding: 11px 13px;
   margin-bottom: 0;
   margin-top: 16px;
+}
+.servicePageBorder{
+  margin-top: 60px !important;
 }
 .blog__card {
   border-radius: 15px;

@@ -1517,6 +1517,25 @@
                 <a href="/work" class="more">See all</a>
             </p>
         </div>
+
+        <div class="section__title text-center m__tb--b">
+            <?php if ($top_title): ?>
+               <h6><?php echo esc_html($top_title); ?></h6>
+           <?php endif; ?>
+
+           <?php if ($main_heading): ?>
+               <?php echo wp_kses_post($main_heading); ?>
+           <?php endif; ?>
+
+           <?php if ($short_description): ?>
+               <p class="d-none d-lg-inline-block">
+                   <?php echo esc_html($short_description); ?>
+                   
+               </p>
+           <?php endif; ?> 
+       </div>
+
+       
         <div class="process__content">
             
             <div class="process__content--card wow fadeInUp" data-wow-duration="1s">

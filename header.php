@@ -1002,7 +1002,7 @@
                                                     <a class="nav-link" href="/pricing/seo/">SEO Package</a>
                                                 </li> -->
                                                 <li class="">
-                                                    <a class="nav-link" href="/pricing/social-media/"> Social Media
+                                                    <a class="nav-link" href="/social-media-pricing/"> Social Media
                                                         Package</a>
                                                 </li>
                                             </ul>
@@ -1011,7 +1011,7 @@
                                 </div>
                             </li>
                             <li class="menu__inner--item">
-                                <a href="/portfolio" class="menu__inner--item--link">
+                                <a href="/our-work" class="menu__inner--item--link">
                                     <span data-hover="Our Work">Our Work</span>
                                 </a>
                             </li>
