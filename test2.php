@@ -13,26 +13,85 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-    <?php get_template_part('partials/header', 'links');
-    wp_head(); ?>
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
 
+    <?php if (is_front_page()): ?>
+        <title>Home - <?php bloginfo('name'); ?></title>
+        <meta name="title" content="IT Company in Netherland | Website, App & Digital Marketing Services">
+        <meta name="description"
+            content="Looking for the best IT company in Netherland for website development, App development, SEO, SMM and other services? We offer all IT & Marketing Services. Contact Us!">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:type" content="website">
+        <meta property="og:image"
+            content="<?php echo get_template_directory_uri(); ?>/assets/images/website-ontwikkeling.webp">
+        <meta property="og:title" content="IT Company in Netherland | Website, App & Digital Marketing Services">
+        <meta property="og:description"
+            content="Looking for the best IT company in Netherland for website development, App development, SEO, SMM and other services? We offer all IT & Marketing Services. Contact Us!">
+        <meta property="og:url" content="<?php echo esc_url(home_url('/')); ?>">
+        <meta property="og:site_name" content="<?php bloginfo('name'); ?>">
+    <?php else: ?>
+        <title><?php wp_title('-', true, 'right'); ?><?php bloginfo('name'); ?></title>
+    <?php endif; ?>
+
+
+    <link rel="canonical" href="<?php echo esc_url(home_url('/')); ?>">
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/assetss/images/favicon.svg"
+        type="image/x-icon">
+    <!-- fontawesome CSS -->
+
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/fontawesome.css" rel="stylesheet"
+        type="text/css">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/brands.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/solid.css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/bootstrap.min.css">
+
+    <!-- fancybox -->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/fancybox.css">
+
+    <!-- owl-slider -->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/owl.theme.default.min.css">
+
+    <!-- aos animation -->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/animate.min.css">
+
+    <!-- global css -->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/style.css">
+
+
+    <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/api.js" async="" defer=""></script>
+    <?php wp_head(); ?>
 </head>
-<?php
-$home_link = get_field('home_link', 'option');
-$wat_doen_wij_link = get_field('wat_doen_wij_link', 'option');
-$pricing_link = get_field('pricing_link', 'option');
-$our_work_link = get_field('our_work_link', 'option');
-$over_ons_link = get_field('over_ons_link', 'option');
-$contact_ons_link = get_field('contact_ons_link', 'option');
-$menu_button_1 = get_field('menu_button_1', 'option');
-$menu_button_2 = get_field('menu_button_2', 'option');
-
-$mmi_webdev = get_field('mmi_webdev', 'option');
-?>
 
 <body <?php body_class(); ?>>
     <header class="header" id="myHeader">
+    <?php
+$top_header_menu = get_field('top_header_menu', 'option'); // assuming it's in Theme Options
 
+if ($top_header_menu) :
+
+    $home = $top_header_menu['home'];
+    $home_link = $top_header_menu['home_link'];
+
+    $wat_doen_wij = $top_header_menu['wat_doen_wij'];
+    $wat_doen_wij_link = $top_header_menu['wat_doen_wij_link'];
+
+    $pricing = $top_header_menu['pricing'];
+    $pricing_link = $top_header_menu['pricing_link'];
+
+    $our_work = $top_header_menu['our_work'];
+    $our_work_link = $top_header_menu['our_work_link'];
+
+    $over_ons = $top_header_menu['over_ons'];
+    $over_ons_link = $top_header_menu['over_ons_link'];
+
+    $contact_ons = $top_header_menu['contact_ons'];
+    $contact_ons_link = $top_header_menu['contact_ons_link'];
+?>
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar__custom">
             <div class="l__container container-xxl">
                 <?php
@@ -78,26 +137,20 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
 
 
                     <div class="offcanvas-body">
-
+                        
                         <ul class="navbar-nav justify-content-lg-center menu__inner flex-grow-1">
                             <li class="menu__inner--item">
-                                <?php if ($home_link): ?>
-                                    <a href="<?php echo esc_url($home_link['url']); ?>" class="menu__inner--item--link">
-                                        <span
-                                            data-hover="<?php echo esc_html($home_link['title']); ?>"><?php echo esc_html($home_link['title']); ?></span>
-                                    </a>
+                                <?php if (!empty($home) && !empty($home_link)) : ?>
+                                <a href="<?php echo esc_url($home_link); ?>" class="menu__inner--item--link">
+                                    <span data-hover="<?php echo esc_html($home); ?>"><?php echo esc_html($home); ?></span>
+                                </a>
                                 <?php endif; ?>
                             </li>
-
                             <li class="menu__inner--item menu__dropdown d-none d-lg-none">
-                                <?php if ($wat_doen_wij_link): ?>
-                                    <a href="<?php echo esc_url($wat_doen_wij_link['url']); ?>"
-                                        class="menu__inner--item--link">
-                                        <span
-                                            data-hover="<?php echo esc_html($wat_doen_wij_link['title']); ?>"><?php echo esc_html($wat_doen_wij_link['title']); ?></span>
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </a>
-                                <?php endif; ?>
+                                <a href="#" class="menu__inner--item--link">
+                                    <span data-hover="Wat Doen Wij">Wat Doen Wij</span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </a>
                                 <div class="submenu megamenu__normal">
                                     <div class="accordion custom__accordion">
                                         <div class="accordion__item">
@@ -274,46 +327,71 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                             <li class="menu__inner--item nav-item mb-0 d-lg-none">
                                 <div class="accordion accordion-flush" id="accordionParent">
                                     <div class="accordion-item">
-                                        <?php if ($wat_doen_wij_link): ?>
-
-                                            <a href="<?php echo esc_url($wat_doen_wij_link['url']); ?>"
-                                                class="menu__inner--item--link accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-                                                aria-expanded="false" aria-controls="flush-collapseTwo">
-                                                <span
-                                                    data-hover="<?php echo esc_html($wat_doen_wij_link['title']); ?>"><?php echo esc_html($wat_doen_wij_link['title']); ?></span>
-                                            </a>
-                                        <?php endif; ?>
+                                        <a href="#" class="menu__inner--item--link accordion-button collapsed"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                            aria-expanded="false" aria-controls="flush-collapseTwo">
+                                            <span data-hover="Wat Doen Wij">Wat Doen Wij</span>
+                                        </a>
                                         <div id="flush-collapseTwo" class="accordion-collapse collapse"
                                             data-bs-parent="#accordionParent">
                                             <!-- web development -->
                                             <div class="accordion-item-service">
                                                 <h3>WebDevelopment</h3>
                                                 <ul class="list">
-                                                    <?php
-                                                    $mmi_webdev = get_field('mmi_webdev', 'option');
-                                                    if ($mmi_webdev):
-                                                        foreach ($mmi_webdev as $item):
 
-                                                            ?>
 
-                                                            <li>
-                                                                <a
-                                                                    href="<?php echo esc_url($item['mmiwd_link']['url'] ?: '#'); ?>">
-                                                                    <?php if ($item['mmiwd_image']): ?>
-                                                                        <img src="<?php echo esc_url($item['mmiwd_image']['url']); ?>"
-                                                                            alt="<?php echo esc_attr($item['mmiwd_image']['alt']); ?>">
-                                                                    <?php endif; ?>
+                                                    <li>
+                                                        <a href="/webshop-development">
+                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Website_developlent.svg"
+                                                                alt="">
+                                                            Webshop development
+                                                        </a>
+                                                    </li>
 
-                                                                    <?php echo esc_html($item['mmiwd_title']); ?>
 
-                                                                </a>
-                                                            </li>
 
-                                                            <?php
-                                                        endforeach;
-                                                    endif;
-                                                    ?>
+                                                    <li>
+                                                        <a href="/website-development">
+                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/App_Development.svg"
+                                                                alt="">
+                                                            Website Development
+                                                        </a>
+                                                    </li>
+
+
+
+                                                    <li>
+                                                        <a href="/website-support">
+                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Programmer-amico.svg"
+                                                                alt="">
+                                                            Website Support
+                                                        </a>
+                                                    </li>
+
+
+
+                                                    <li>
+                                                        <a href="/webshop-training">
+                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/UI_UX.svg"
+                                                                alt="">
+                                                            Webshop Training
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/hosting">
+                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/UI_UX.svg"
+                                                                alt="">
+                                                            Hosting
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/domeinnaam-registratie">
+                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/UI_UX.svg"
+                                                                alt="">
+                                                            Domeinnaam Registratie
+                                                        </a>
+                                                    </li>
+
 
                                                 </ul>
                                             </div>
@@ -502,77 +580,157 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                 </div>
                             </li>
                             <li class=" menu__inner--item d-none d-lg-inline-block" style="position:static;">
-                                <?php if ($wat_doen_wij_link): ?>
-
-                                    <a href="<?php echo esc_url($wat_doen_wij_link['url']); ?>"
-                                        class="menu__inner--item--link">
-                                        <span
-                                            data-hover="<?php echo esc_html($wat_doen_wij_link['title']); ?>"><?php echo esc_html($wat_doen_wij_link['title']); ?></span>
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </a>
-                                <?php endif; ?>
+                                <a href="/services" class="menu__inner--item--link">
+                                    <span data-hover="Wat Doen Wij">Wat Doen Wij</span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </a>
                                 <div class="megamenu">
                                     <div class="menu__drop">
-                                        <?php $mmitems = get_field('mmitems', 'option');
+                                        <div class="box" id="boxid">
+                                            <h4 class="navlist active">
+                                                <a href="/webdevelopment" style="text-decoration: none; color: black;">
+                                                    WebDevelopment
+                                                    <p>We bouwen krachtige en gebruiksvriendelijke websites die
+                                                        resultaat
+                                                        opleveren.</p>
+                                                </a>
+                                            </h4>
 
-                                        if ($mmitems): ?>
-                                            <div class="box" id="boxid">
-                                                <?php foreach ($mmitems as $index => $item):
-                                                    $mmi_title = $item['mmi_title'];
-                                                    $mmi_desc = $item['mmi_desc'];
-                                                    $mmi_link = $item['mmi_link'];
-                                                    $active_class = ($index === 0) ? 'active' : '';
-                                                    ?>
-                                                    <h4 class="navlist <?php echo esc_attr($active_class); ?>">
-                                                        <a href="<?php echo esc_url($mmi_link['url']); ?>"
-                                                            target="<?php echo esc_attr($mmi_link['target']); ?>"
-                                                            style="text-decoration: none; color: black;">
-                                                            <?php echo esc_html($mmi_title); ?>
-                                                            <p><?php echo esc_html($mmi_desc); ?></p>
-                                                        </a>
-                                                    </h4>
-                                                <?php endforeach; ?>
-                                            </div>
-                                        <?php endif; ?>
-
+                                            <h4 class="navlist">
+                                                <a href="/online-marketing"
+                                                    style="text-decoration: none; color: black;">
+                                                    Online Marketing
+                                                    <p>We verhogen uw online zichtbaarheid via SEO, SEA en social media.
+                                                    </p>
+                                                </a>
+                                            </h4>
+                                            <h4 class="navlist">
+                                                <a href="/zakelijke-telefonie"
+                                                    style="text-decoration: none; color: black;">
+                                                    Zakelijke Telefonie
+                                                    <p>Altijd bereikbaar met professionele VoIP- en
+                                                        communicatiesystemen.
+                                                    </p>
+                                                </a>
+                                            </h4>
+                                            <!-- AI Services -->
+                                            <h4 class="navlist">
+                                                <a href="/ai-services" style="text-decoration: none; color: black;">
+                                                    AI Services
+                                                    <p>Altijd bereikbaar met professionele VoIP- en
+                                                        communicatiesystemen.
+                                                    </p>
+                                                </a>
+                                            </h4>
+                                        </div>
                                         <div class="textbox">
 
                                             <!-- WebDevelopment -->
                                             <div class="textboxcontainer active">
                                                 <div class="row">
-                                                    <?php
-                                                    $mmi_webdev = get_field('mmi_webdev', 'option');
-                                                    if ($mmi_webdev):
-                                                        foreach ($mmi_webdev as $item):
 
-                                                            ?>
-                                                            <div class="col-md-6">
-                                                                <a
-                                                                    href="<?php echo esc_url($item['mmiwd_link']['url'] ?: '#'); ?>">
-                                                                    <div class="textbox__type">
-                                                                        <?php if ($item['mmiwd_image']): ?>
-                                                                            <img src="<?php echo esc_url($item['mmiwd_image']['url']); ?>"
-                                                                                alt="<?php echo esc_attr($item['mmiwd_image']['alt']); ?>">
-                                                                        <?php endif; ?>
-                                                                        <div>
-                                                                            <?php if ($item['mmiwd_title']): ?>
-                                                                                <h5><?php echo esc_html($item['mmiwd_title']); ?>
-                                                                                </h5>
-                                                                            <?php endif; ?>
-                                                                            <?php if ($item['mmiwd_desc']): ?>
-                                                                                <p><?php echo esc_html($item['mmiwd_desc']); ?></p>
-                                                                            <?php endif; ?>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
+                                                    <!-- Webshop development -->
+                                                    <div class="col-md-6">
+                                                        <a href="/webshop-development">
+                                                            <div class="textbox__type">
+                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Website_developlent.svg"
+                                                                    alt="">
+                                                                <div>
+                                                                    <h5>Webshop development
+                                                                    </h5>
+                                                                    <p>Wij creëren professionele en schaalbare webshops
+                                                                        die uw online verkoop stimuleren en de
+                                                                        klantervaring optimaliseren.
+                                                                    </p>
+                                                                </div>
                                                             </div>
-                                                            <?php
-                                                        endforeach;
-                                                    endif;
-                                                    ?>
+                                                        </a>
+                                                    </div>
+
+
+                                                    <!-- Website Development -->
+                                                    <div class="col-md-6">
+                                                        <a href="/website-development">
+                                                            <div class="textbox__type">
+                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/App_Development.svg"
+                                                                    alt="">
+                                                                <div>
+                                                                    <h5>Website Development</h5>
+                                                                    <p>Met onze op maat gemaakte websites krijgt u een
+                                                                        modern en responsief design dat past bij uw merk
+                                                                        en doelen.</p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+
+
+                                                    <!-- Website Support -->
+                                                    <div class="col-md-6">
+                                                        <a href="/website-support">
+                                                            <div class="textbox__type">
+                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Programmer-amico.svg"
+                                                                    alt="">
+                                                                <div>
+                                                                    <h5>Website Support</h5>
+                                                                    <p>Onze website support zorgt ervoor dat uw site
+                                                                        altijd veilig, snel en up-to-date blijft met
+                                                                        technische ondersteuning op maat.</p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+
+
+                                                    <!-- Webshop Training -->
+                                                    <div class="col-md-6">
+                                                        <a href="/webshop-training">
+                                                            <div class="textbox__type">
+                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/UI_UX.svg"
+                                                                    alt="">
+                                                                <div>
+                                                                    <h5>Webshop Training</h5>
+                                                                    <p>Wij bieden praktische webshoptrainingen zodat u
+                                                                        zelf eenvoudig uw producten kunt beheren en
+                                                                        verkopen.</p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <!-- Hosting -->
+                                                    <div class="col-md-6">
+                                                        <a href="/hosting">
+                                                            <div class="textbox__type">
+                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/UI_UX.svg"
+                                                                    alt="">
+                                                                <div>
+                                                                    <h5>Hosting</h5>
+                                                                    <p>Snelle, betrouwbare en veilige hostingoplossingen
+                                                                        om uw website altijd online en goed bereikbaar
+                                                                        te houden.</p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <!-- Domeinnaam Registratie -->
+                                                    <div class="col-md-6">
+                                                        <a href="/domeinnaam-registratie">
+                                                            <div class="textbox__type">
+                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/UI_UX.svg"
+                                                                    alt="">
+                                                                <div>
+                                                                    <h5>Domeinnaam Registratie</h5>
+                                                                    <p>Wij helpen u bij het registreren van uw perfecte
+                                                                        domeinnaam zodat u direct professioneel online
+                                                                        zichtbaar bent.</p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+
+
                                                 </div>
                                             </div>
-
                                             <!-- Online Marketing -->
                                             <div class="textboxcontainer">
                                                 <div class="row">
@@ -843,13 +1001,10 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                 </div>
                             </li>
                             <li class="menu__inner--item d-none d-lg-block">
-                                <?php if ($pricing_link): ?>
-                                    <a href="<?php echo esc_url($pricing_link['url']); ?>" class="menu__inner--item--link">
-                                        <span
-                                            data-hover="<?php echo esc_html($pricing_link['title']); ?>"><?php echo esc_html($pricing_link['title']); ?></span>
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </a>
-                                <?php endif; ?>
+                                <a href="#" class="menu__inner--item--link">
+                                    <span data-hover="Pricing">Pricing</span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </a>
                                 <div class="submenu megamenu__normal">
                                     <ul class="submenu__list">
                                         <!-- <li class="item">
@@ -872,12 +1027,11 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                             <li class="menu__inner--item nav-item mb-0 d-lg-none">
                                 <div class="accordion accordion-flush" id="accordionParent">
                                     <div class="accordion-item">
-                                        <a href="<?php echo esc_url($pricing_link['url']); ?>"
-                                            class="menu__inner--item--link accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-                                            aria-expanded="false" aria-controls="flush-collapseThree">
-                                            <span
-                                                data-hover="<?php echo esc_html($pricing_link['title']); ?>"><?php echo esc_html($pricing_link['title']); ?></span>
+                                        <a href="#" class="menu__inner--item--link accordion-button collapsed"
+                                            type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                            aria-controls="flush-collapseThree">
+                                            <span data-hover="Pricing">Pricing</span>
                                         </a>
                                         <div id="flush-collapseThree" class="accordion-collapse collapse"
                                             data-bs-parent="#accordionParent">
@@ -895,48 +1049,32 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                 </div>
                             </li>
                             <li class="menu__inner--item">
-                                <?php if ($our_work_link): ?>
-                                    <a href="<?php echo esc_url($our_work_link['url']); ?>" class="menu__inner--item--link">
-                                        <span
-                                            data-hover="<?php echo esc_html($our_work_link['title']); ?>"><?php echo esc_html($our_work_link['title']); ?></span>
-                                    </a>
-                                <?php endif; ?>
+                                <a href="/our-work" class="menu__inner--item--link">
+                                    <span data-hover="Our Work">Our Work</span>
+                                </a>
                             </li>
                             <li class="menu__inner--item">
-                                <?php if ($over_ons_link): ?>
-                                    <a href="<?php echo esc_url($over_ons_link['url']); ?>" class="menu__inner--item--link">
-                                        <span
-                                            data-hover="<?php echo esc_html($over_ons_link['title']); ?>"><?php echo esc_html($over_ons_link['title']); ?></span>
-                                    </a>
-                                <?php endif; ?>
+                                <a href="/over-ons" class="menu__inner--item--link">
+                                    <span data-hover="Over Ons">Over Ons</span>
+                                </a>
                             </li>
                             <li class="menu__inner--item">
-                                <?php if ($contact_ons_link): ?>
-                                    <a href="<?php echo esc_url($contact_ons_link['url']); ?>"
-                                        class="menu__inner--item--link">
-                                        <span
-                                            data-hover="<?php echo esc_html($contact_ons_link['title']); ?>"><?php echo esc_html($contact_ons_link['title']); ?></span>
-                                    </a>
-                                <?php endif; ?>
+                                <a href="/contact" class="menu__inner--item--link">
+                                    <span data-hover="Contact ons">Contact ons</span>
+                                </a>
                             </li>
                         </ul>
                         <div class="navbar__right d-none d-lg-flex">
-                            <?php if ($menu_button_1): ?>
-                                <div class="call d-none d-xl-flex">
-                                    <i class="fa-solid fa-phone"></i>
-                                    <a
-                                        href="<?php echo esc_url($menu_button_1['url']); ?>"><?php echo esc_html($menu_button_1['title']); ?></a>
-                                </div>
-                            <?php endif; ?>
-                            <?php if ($menu_button_1): ?>
-                                <button data-bs-toggle="modal" data-id=""
-                                    data-bs-target="<?php echo esc_url($menu_button_2['url']); ?>"
-                                    class="l__button l__button--border">Q<?php echo esc_html($menu_button_2['title']); ?></button>
-                            <?php endif; ?>
+                            <div class="call d-none d-xl-flex">
+                                <i class="fa-solid fa-phone"></i>
+                                <a href="tel:0851234567">085 123 4567</a>
+                            </div>
+                            <button data-bs-toggle="modal" data-id="" data-bs-target="#enquiryModal"
+                                class="l__button l__button--border">Quick Enquiry</button>
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
-
+<?php endif; ?>
     </header>
