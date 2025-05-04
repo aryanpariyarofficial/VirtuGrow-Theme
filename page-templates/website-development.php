@@ -1,13 +1,31 @@
 <?php
-/*
-Template Name: Website Development
-*/
+/* Template Name: Website Development */
+get_header();
+
+// Service Hero Section
+$hero_subtitle = get_field('hero_subtitle');
+$hero_description = get_field('hero_description');
+$hero_cta_link = get_field('hero_cta_link');
+$hero_main_image = get_field('hero_main_image');
+$hero_icon_group = get_field('hero_icon_group');
+// Service Info Section 
+$service_infos = get_field('service_infos');
+
+// Industry Section
+$industry_top_title = get_field('industry_top_title');
+$industry_main_heading = get_field('industry_main_heading');
+$industry_cards = get_field('industry_cards');
+
+
+
+// other service
+$top_title_small = get_field('top_title_small', 'option');
+$main_heading_big = get_field('main_heading_big', 'option');
+$other_services = get_field('other_services_card', 'option');
 ?>
-<?php get_header(); ?>
 
 
 <div style="min-height: 50vh">
-
     <div class="site-main">
         <section class="service__banner-">
             <div class="l__container">
@@ -16,201 +34,122 @@ Template Name: Website Development
                         <div class="col-lg-7 col-md-6">
                             <div class="left">
                                 <div class="section__title clearfix">
-                                    <h1 class="title">Website Development</h1>
+                                    <h1 class="title"><?php the_title(); ?></h1>
                                 </div>
                                 <div class="title-desc">
-                                    <h4 class="sub-title-desc">Highly functional and visually appealing website designed
-                                        to meet your needs.</h4>
-                                    <p>Crafting Digital Excellence: Elevate Your Online Presence with Innovative Website
-                                        Development Solutions. Tailored Designs, Seamless Functionality, and
-                                        Future-Ready Technology – Your Journey to Success Starts Here!</p>
-                                    <button data-bs-toggle="modal" data-bs-target="#enquiryModal"
-                                        data-id="34a938d8-134a-45af-94d2-abc7c8b13c4c"
-                                        class="l__button l__button--border">
-                                        <span>lets start conversation</span>
-                                        <i class="fa-solid fa-chevron-right"></i></button>
+                                    <?php if (!empty($hero_subtitle)): ?>
+                                        <h4 class="sub-title-desc"><?php echo esc_html($hero_subtitle); ?></h4>
+                                    <?php endif; ?>
+                                    <?php if (!empty($hero_description)): ?>
+                                        <p><?php echo esc_html($hero_description); ?></p>
+                                    <?php endif; ?>
+                                    <?php if (!empty($hero_cta_link)): ?>
+                                        <button data-bs-toggle="modal"
+                                            data-bs-target="<?php echo esc_url($hero_cta_link['url']); ?>"
+                                            data-id="34a938d8-134a-45af-94d2-abc7c8b13c4c"
+                                            class="l__button l__button--border">
+                                            <span><?php echo esc_html($hero_cta_link['title']); ?></span>
+                                            <i class="fa-solid fa-chevron-right"></i></button>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-6 mb-4 mb-md-0">
                             <div class="right mt-4">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mask_group.svg"
-                                    class="" alt="Man pointing upward.">
-                                <div class="info">
-
-                                    <div class="info__card">
-                                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/calender_1.svg"
-                                            alt="wd-services/info-g/calender_1.svg">
-                                        <h4>6 Long</h4>
-                                        <h6>Years of Experience</h6>
+                                <?php if (!empty($hero_main_image)): ?>
+                                    <img class="" src="<?php echo esc_url($hero_main_image['url']); ?>"
+                                        alt="<?php echo esc_attr($hero_main_image['alt']); ?>">
+                                <?php endif; ?>
+                                <?php if ($hero_icon_group): ?>
+                                    <div class="info">
+                                        <?php foreach ($hero_icon_group as $icon): ?>
+                                            <div class="info__card">
+                                                <?php if (!empty($icon['hero_icon_image'])): ?>
+                                                    <img src="<?php echo esc_url($icon['hero_icon_image']['url']); ?>"
+                                                        alt="<?php echo esc_attr($icon['hero_icon_image']['alt']); ?>">
+                                                <?php endif; ?>
+                                                <?php if (!empty($icon['hero_icon_title'])): ?>
+                                                    <h4><?php echo esc_html($icon['hero_icon_title']); ?></h4>
+                                                <?php endif; ?>
+                                                <!-- <h6>Years of Experience</h6> -->
+                                                <?php if (!empty($icon['hero_icon_desc'])): ?>
+                                                    <h6><?php echo esc_html($icon['hero_icon_desc']); ?></h6>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php endforeach; ?>
                                     </div>
-
-                                    <div class="info__card">
-                                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Group_1.svg"
-                                            alt="wd-services/info-g/Group_1.svg">
-                                        <h4>300+</h4>
-                                        <h6>Happy Clients</h6>
-                                    </div>
-
-                                    <div class="info__card">
-                                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/creativity.png"
-                                            alt="wd-services/info-g/creativity.png">
-                                        <h4>400+</h4>
-                                        <h6>Successful Projects</h6>
-                                    </div>
-
-                                    <div class="info__card">
-                                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/team_1.svg"
-                                            alt="wd-services/info-g/team_1.svg">
-                                        <h4>80+</h4>
-                                        <h6>Team Member & Growing</h6>
-                                    </div>
-
-                                </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="service__info overflow">
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-
-                        <div class="col wow fadeInUp" data-wow-duration="1s">
-                            <div class="service__info--card">
-                                <div class="service__info--card-head">
-                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/thumb_1.svg"
-                                        alt="wd-services/info/thumb_1.svg">
-                                    <h2 class="title">Satisfaction Guarantee</h2>
+                <?php if ($service_infos): ?>
+                    <div class="service__info overflow">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <?php foreach ($service_infos as $info): ?>
+                                <div class="col wow fadeInUp" data-wow-duration="1s">
+                                    <div class="service__info--card">
+                                        <div class="service__info--card-head">
+                                            <?php if (!empty($info['service_info_image'])): ?>
+                                                <img src="<?php echo esc_url($info['service_info_image']['url']); ?>"
+                                                    alt="<?php echo esc_attr($info['service_info_image']['alt']); ?>">
+                                            <?php endif; ?>
+                                            <?php if (!empty($info['service_info_title'])): ?>
+                                                <h2 class="title"><?php echo esc_html($info['service_info_title']); ?></h2>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="service__info--content">
+                                            <?php if (!empty($info['service_info_desc'])): ?>
+                                                <p><?php echo esc_html($info['service_info_desc']); ?></p>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="service__info--content">
-                                    <p>Elevate online presence with website development expertise.</p>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
-
-                        <div class="col wow fadeInUp" data-wow-duration="1s">
-                            <div class="service__info--card">
-                                <div class="service__info--card-head">
-                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/quality.svg"
-                                        alt="wd-services/info/quality.svg">
-                                    <h2 class="title">Best Quality work</h2>
-                                </div>
-                                <div class="service__info--content">
-                                    <p>Excellence and innovation define our development solutions.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col wow fadeInUp" data-wow-duration="1s">
-                            <div class="service__info--card">
-                                <div class="service__info--card-head">
-                                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Group_2.svg"
-                                        alt="wd-services/info/Group_2.svg">
-                                    <h2 class="title">Interactive Interface</h2>
-                                </div>
-                                <div class="service__info--content">
-                                    <p>Create an engaging interface for a optimal user experience.</p>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
         </section>
-
 
         <!-- excellence -->
         <section class="industry  p__tb">
             <div class="l__container overflow">
                 <div class="section__title text-center clearfix wow fadeInUp" data-wow-duration="1s">
-                    <h6>Industries we Serve</h6>
-                    <h2 class="title">Proud to deliver excellence <span>every time</span></h2>
+                    <?php if (!empty($industry_top_title)): ?>
+                        <h6><?php echo esc_html($industry_top_title); ?></h6>
+                    <?php endif; ?>
+                    <?php if (!empty($industry_main_heading)): ?>
+                        <?php echo wp_kses_post($industry_main_heading); ?>
+                    <?php endif; ?>
                 </div>
                 <div class="excellence">
-                    <div class="row g-0 excellence__first">
-
-                        <div class="col-md-6 col-sm-6">
-                            <div class="excellence__card wow fadeInUp" data-wow-duration="1s">
-                                <div class="excellence__card--img d-none d-md-block">
-                                    <img class="lazy-load"
-                                        data-src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/E_Commerce-06.svg"
-                                        alt="Online shopping">
+                    <?php if ($industry_cards): ?>
+                        <div class="row g-0 excellence__first">
+                            <?php foreach ($industry_cards as $card): ?>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="excellence__card wow fadeInUp" data-wow-duration="1s">
+                                        <?php if (!empty($card['industry_card_image'])): ?>
+                                            <div class="excellence__card--img d-none d-md-block">
+                                                <img class="lazy-load"
+                                                    data-src="<?php echo esc_url($card['industry_card_image']['url']); ?>"
+                                                    alt="<?php echo esc_attr($card['industry_card_image']['alt']); ?>">
+                                            </div>
+                                        <?php endif; ?>
+                                        <div class="excellence__card--content">
+                                            <?php if (!empty($card['industry_card_title'])): ?>
+                                                <h3><?php echo esc_html($card['industry_card_title']); ?></h3>
+                                            <?php endif; ?>
+                                            <?php if (!empty($card['industry_card_desc'])): ?>
+                                                <p><?php echo esc_html($card['industry_card_desc']); ?></p>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="excellence__card--content">
-                                    <h3>E-commerce</h3>
-                                    <p>We redefine the online shopping experience through innovative e-commerce website
-                                        development solutions with over six years of experience in website development.
-                                    </p>
-                                    <!-- <a href="/services/website-design-in-nepal/industry/e-commerce-business">
-                        Read More
-                        <span><i class="fa-solid fa-chevron-right"></i></span>
-                    </a> -->
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
-
-                        <div class="col-md-6 col-sm-6">
-                            <div class="excellence__card wow fadeInUp" data-wow-duration="1s">
-                                <div class="excellence__card--img d-none d-md-block">
-                                    <img class="lazy-load"
-                                        data-src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Travel_and_trekking.svg"
-                                        alt="Travel and Trekking Concept.">
-                                </div>
-                                <div class="excellence__card--content">
-                                    <h3>Travel and Trekking</h3>
-                                    <p>We highly value experience over anything else. Therefore, we provide you with the
-                                        best Travel and Trekking website development services.</p>
-                                    <!-- <a href="/services/website-design-in-nepal/industry/travel-and-trekking">
-                        Read More
-                        <span><i class="fa-solid fa-chevron-right"></i></span>
-                    </a> -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6">
-                            <div class="excellence__card wow fadeInUp" data-wow-duration="1s">
-                                <div class="excellence__card--img d-none d-md-block">
-                                    <img class="lazy-load"
-                                        data-src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/E_learning.svg"
-                                        alt="E-Learning Website.">
-                                </div>
-                                <div class="excellence__card--content">
-                                    <h3>E-Learning</h3>
-                                    <p>We specialize in empowering education through digital solutions. Here, we are
-                                        dedicated to developing Innovative e-learning website to seamlessly merge
-                                        technology and education.</p>
-                                    <!-- <a href="/services/website-design-in-nepal/industry/educational-institute">
-                        Read More
-                        <span><i class="fa-solid fa-chevron-right"></i></span>
-                    </a> -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-sm-6">
-                            <div class="excellence__card wow fadeInUp" data-wow-duration="1s">
-                                <div class="excellence__card--img d-none d-md-block">
-                                    <img class="lazy-load"
-                                        data-src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/others.svg"
-                                        alt="Other System Development">
-                                </div>
-                                <div class="excellence__card--content">
-                                    <h3>Informative and Others</h3>
-                                    <p>Our website design and development services are not limited to the
-                                        above-mentioned categories. We are your trusted partner for custom website
-                                        design and development in Nepal.</p>
-                                    <!-- <a href="/services/website-design-in-nepal/industry/other-website">
-                        Read More
-                        <span><i class="fa-solid fa-chevron-right"></i></span>
-                    </a> -->
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    <?php endif; ?>
                 </div>
-
             </div>
         </section>
 
@@ -926,7 +865,8 @@ Template Name: Website Development
                                 <div class="col">
                                     <div class="cards">
                                         <div class="icon">
-                                            <img class="lazy-load" data-src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/seo_1.svg"
+                                            <img class="lazy-load"
+                                                data-src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/seo_1.svg"
                                                 alt="SEO Optimization of Website Concept." height="50" width="50">
                                         </div>
                                         <div class="content">
@@ -950,242 +890,79 @@ Template Name: Website Development
                                 <p>Send us your website url</p>
                             </h3>
 
-                            <iframe
-  src="https://link.virtugrow.nl/widget/form/EOfAu2sJs51X0r4WyqyW"
-  style="width:100%;height:100%;border:none;border-radius:0px"
-  id="inline-EOfAu2sJs51X0r4WyqyW" 
-  data-layout="{'id':'INLINE'}"
-  data-trigger-type="alwaysShow"
-  data-trigger-value=""
-  data-activation-type="alwaysActivated"
-  data-activation-value=""
-  data-deactivation-type="neverDeactivate"
-  data-deactivation-value=""
-  data-form-name="Check Your Website Quality for Free"
-  data-height="400"
-  data-layout-iframe-id="inline-EOfAu2sJs51X0r4WyqyW"
-  data-form-id="EOfAu2sJs51X0r4WyqyW"
-  title="Check Your Website Quality for Free"
-      >
-</iframe>
-<script src="https://link.virtugrow.nl/js/form_embed.js"></script>
+                            <iframe src="https://link.virtugrow.nl/widget/form/EOfAu2sJs51X0r4WyqyW"
+                                style="width:100%;height:100%;border:none;border-radius:0px"
+                                id="inline-EOfAu2sJs51X0r4WyqyW" data-layout="{'id':'INLINE'}"
+                                data-trigger-type="alwaysShow" data-trigger-value=""
+                                data-activation-type="alwaysActivated" data-activation-value=""
+                                data-deactivation-type="neverDeactivate" data-deactivation-value=""
+                                data-form-name="Check Your Website Quality for Free" data-height="400"
+                                data-layout-iframe-id="inline-EOfAu2sJs51X0r4WyqyW" data-form-id="EOfAu2sJs51X0r4WyqyW"
+                                title="Check Your Website Quality for Free">
+                            </iframe>
+                            <script src="https://link.virtugrow.nl/js/form_embed.js"></script>
 
-                            <!-- <form method="POST" onsubmit="event.preventDefault();handleWebEnq(this);">
-                                <input type="hidden" name="csrfmiddlewaretoken"
-                                    value="VgpIQWrDsq5tvQYoZJJgyHSlKqvEn7vQeBoK7nmiuMMZeRBpwi720nwLqSdAgJLo">
-                                <input type="url" class="form-control" placeholder="type Website URL*" required=""
-                                    name="website_url">
-                                <input type="text" class="form-control" placeholder="your Email*" required=""
-                                    name="email">
-                                <input type="number" class="form-control mobile_code" placeholder="Phone Number"
-                                    id="webPhone" required="">
-                                <button class="l__button l__button--primary">
-                                    <span>Submit Now</span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
-                            </form> -->
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <script>
-            function handleWebEnq(form) {
-                let fd = new FormData(form);
-                fetch(
-                    "/api/web-enquiry/",
-                    {
-                        method: "POST",
-                        body: fd
-                    }
-                )
-                    .then(r => r.json())
-                    .then(r => {
-                        form.reset();
-                        Swal.fire(r);
-                    })
-            }
-            document.addEventListener("DOMContentLoaded", () => {
-                var sdialCode = "";
-                var wintLinput = $("#webPhone");
-
-                wintLinput.intlTelInput({
-                    initialCountry: "auto",
-                    separateDialCode: true,
-                    geoIpLookup: function (success, failure) {
-                        fetch("https://ipapi.co/json")
-                            .then(function (res) { return res.json(); })
-                            .then(function (data) { success(data.country_code); sdialCode = data.country_calling_code; })
-                            .catch(function () { failure(); });
-                    }, hiddenInput: 'phone'
-                }).on('countrychange', function (e, countryData) {
-                    sdialCode = wintLinput.intlTelInput("getSelectedCountryData").dialCode;
-                    var phNo = wintLinput.val();
-                    if (phNo.startsWith('+')) {
-                        phNo = phNo.replace(sdialCode, `${sdialCode}-`)
-                        $("input[name=phone]").val(`${phNo}`);
-                    } else {
-                        $("input[name=phone]").val(`+${sdialCode}-${phNo}`);
-                    }
-                });
-
-                wintLinput.on("keyup", (e) => {
-                    var phNo = wintLinput.val();
-                    if (phNo.startsWith('+')) {
-                        phNo = phNo.replace(sdialCode, `${sdialCode}-`)
-                        $("input[name=phone]").val(`${phNo}`);
-                    } else {
-                        $("input[name=phone]").val(`+${sdialCode}-${phNo}`);
-                    }
-                })
-            })
-        </script>
-
-
-
 
         <!--  other service -->
         <section class="service-other p__tb overflow">
             <div class="l__container wow fadeInUp" data-wow-duration="1s">
                 <div class="section__title text-center clearfix">
-                    <h6>other services</h6>
-                    <h2 class="title">One Solution For All Your <span>Digital needs</span></h2>
-                </div>
-                <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 gy-lg-5 gy-4 gx-4">
-
-
-
-
-                    <div class="col">
-                        <div class="service__home--card  pe-lg-4 pe-auto  text-center text-md-start">
-                            <a href="/services/mobile-app-development">
-                                <div class="service__home--card-icon">
-                                    <img class="lazy-load" data-src="/media/services/App_Development.svg" alt="">
-                                </div>
-                                <div class="service__home--card-content">
-                                    <h3>App Development</h3>
-                                    <p>Innovative and user-friendly mobile application designed to engage users.</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
-
-                    <div class="col">
-                        <div class="service__home--card  pe-lg-4 pe-auto  text-center text-md-start">
-                            <a href="/services/system-software-development">
-                                <div class="service__home--card-icon">
-                                    <img class="lazy-load" data-src="/media/services/Programmer-amico.svg" alt="">
-                                </div>
-                                <div class="service__home--card-content">
-                                    <h3>System/Software Development</h3>
-                                    <p>System/software developed according to your business needs.</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
-
-                    <div class="col">
-                        <div class="service__home--card  pe-lg-4 pe-auto  text-center text-md-start">
-                            <a href="/services/ui-ux-design">
-                                <div class="service__home--card-icon">
-                                    <img class="lazy-load" data-src="/media/services/UI_UX.svg" alt="">
-                                </div>
-                                <div class="service__home--card-content">
-                                    <h3>UI/UX</h3>
-                                    <p>Design eye-catching UI/UX interfaces for effortless user interaction</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
-
-                    <div class="col">
-                        <div class="service__home--card  pe-lg-4 pe-auto  text-center text-md-start">
-                            <a href="/services/seo-in-nepal">
-                                <div class="service__home--card-icon">
-                                    <img class="lazy-load" data-src="/media/services/SEO_analytics_team-amico.svg"
-                                        alt="">
-                                </div>
-                                <div class="service__home--card-content">
-                                    <h3>Search Engine Optimization (SEO)</h3>
-                                    <p>Custom SEO solutions for enhanced search engine visibility and growth</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
-
-                    <div class="col">
-                        <div class="service__home--card  pe-lg-4 pe-auto  text-center text-md-start">
-                            <a href="/services/social-media-marketing">
-                                <div class="service__home--card-icon">
-                                    <img class="lazy-load" data-src="/media/services/Mobile_Marketing-pana.svg" alt="">
-                                </div>
-                                <div class="service__home--card-content">
-                                    <h3>Social Media Marketing (SMM)</h3>
-                                    <p>Build a strong online presence and engage with your targeted audience</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
-
-                    <div class="col">
-                        <div class="service__home--card  pe-lg-4 pe-auto  text-center text-md-start">
-                            <a href="/services/graphics-design">
-                                <div class="service__home--card-icon">
-                                    <img class="lazy-load" data-src="/media/design/Website_Creator-pana.svg" alt="">
-                                </div>
-                                <div class="service__home--card-content">
-                                    <h3>Graphic Design</h3>
-                                    <p>Designs that Speak Your Brand’s Narrative and Connect with Your Audience</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
-
-                    <div class="col">
-                        <div class="service__home--card  pe-lg-4 pe-auto  text-center text-md-start">
-                            <a href="/services/content-writing">
-                                <div class="service__home--card-icon">
-                                    <img class="lazy-load" data-src="/media/content-marketing/Blog_post-bro.svg" alt="">
-                                </div>
-                                <div class="service__home--card-content">
-                                    <h3>Content Writing</h3>
-                                    <p>Engaging and meaningful content to connect with your audience</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
-
-                    <div class="col">
-                        <div class="service__home--card  pe-lg-4 pe-auto  text-center text-md-start">
-                            <a href="/services/google-ads-ppc-marketing">
-                                <div class="service__home--card-icon">
-                                    <img class="lazy-load" data-src="/media/paid-ads/Revenue-pana.svg" alt="">
-                                </div>
-                                <div class="service__home--card-content">
-                                    <h3>Pay Per Click</h3>
-                                    <p>Maximize your ROI and drive targeted traffic to your digital assets</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
+                    <?php if (!empty($top_title_small)): ?>
+                        <h6><?php echo esc_html($top_title_small); ?></h6>
+                    <?php endif; ?>
+                    <!-- <h6>other services</h6> -->
+                    <?php if (!empty($main_heading_big)): ?>
+                        <?php echo wp_kses_post($main_heading_big); ?>
+                    <?php endif; ?>
+                    <!-- <h2 class="title">One Solution For All Your <span>Digital needs</span></h2> -->
                 </div>
 
+                <?php if ($other_services): ?>
+                    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 gy-lg-5 gy-4 gx-4">
+
+                        <?php foreach ($other_services as $service):
+                            $osc_image = $service['other_service_card_image'];
+                            $osc_title = $service['other_service_card_title'];
+                            $osc_desc = $service['other_service_card_desc'];
+                            $osc_link = $service['other_service_card_link'];
+                            ?>
+
+
+                            <div class="col">
+                                <div class="service__home--card  pe-lg-4 pe-auto  text-center text-md-start">
+                                    <?php if (!empty($osc_link)): ?>
+                                        <a href="<?php echo esc_url($osc_link['url']); ?>"
+                                            target="<?php echo esc_attr($osc_link['target']); ?>">
+                                        <?php endif; ?>
+                                        <?php if (!empty($osc_image)): ?>
+                                            <div class="service__home--card-icon">
+                                                <img class="lazy-load" data-src="<?php echo esc_url($osc_image['url']); ?>"
+                                                    alt="<?php echo esc_attr($osc_image['alt']); ?>">
+                                            </div>
+                                        <?php endif; ?>
+                                        <div class="service__home--card-content">
+                                            <?php if (!empty($osc_title)): ?>
+                                                <h3><?php echo esc_html($osc_title); ?></h3>
+                                            <?php endif; ?>
+                                            <!-- <h3>App Development</h3> -->
+                                            <?php if (!empty($osc_desc)): ?>
+                                                <p><?php echo esc_html($osc_desc); ?></p>
+                                            <?php endif; ?>
+                                            <!-- <p>Innovative and user-friendly mobile application designed to engage users.</p> -->
+                                        </div>
+                                        <?php if (!empty($osc_link)): ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </section>
 
