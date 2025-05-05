@@ -455,14 +455,74 @@ $submenu_ai_services = get_field('submenu_ai_services', 'option');
                                     </a>
                                 <?php endif; ?>
                             </li>
-                            <li class="menu__inner--item">
-                                <?php if ($over_ons_link): ?>
+                            <!-- about mega mneu  and menu-->
+                            <li class="menu__inner--item d-none d-lg-block">
+                            <?php if ($over_ons_link): ?>
                                     <a href="<?php echo esc_url($over_ons_link['url']); ?>" class="menu__inner--item--link">
                                         <span
                                             data-hover="<?php echo esc_html($over_ons_link['title']); ?>"><?php echo esc_html($over_ons_link['title']); ?></span>
+                                        <i class="fa-solid fa-chevron-down"></i>
                                     </a>
                                 <?php endif; ?>
+                                <div class="submenu megamenu__normal">
+                                    <ul class="submenu__list">
+                                        <?php
+                                        $mmi_about_us = get_field('mmi_about_us', 'option');
+                                        if ($mmi_about_us):
+                                            foreach ($mmi_about_us as $itemau):
+                                                $linkau = $itemau['mmia_link'];
+                                                $descau = $itemau['mmia_desc'];
+                                                ?>
+                                                <li class="item">
+                                                    <a href="<?php echo esc_url($linkau['url'] ?: '#'); ?>">
+                                                        <?php echo esc_html($linkau['title']); ?>
+                                                        <?php if ($descau): ?>
+                                                            <span><?php echo esc_html($descau); ?></span>
+                                                        <?php endif; ?>
+                                                    </a>
+                                                </li>
+                                                <?php
+                                            endforeach;
+                                        endif;
+                                        ?>
+                                    </ul>
+                                </div>
                             </li>
+                            <li class="menu__inner--item nav-item mb-0 d-lg-none">
+                                <div class="accordion accordion-flush" id="accordionParent">
+                                    <div class="accordion-item">
+                                        <a href="<?php echo esc_url($over_ons_link['url']); ?>"
+                                            class="menu__inner--item--link accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                            aria-expanded="false" aria-controls="flush-collapseThree">
+                                            <span
+                                                data-hover="<?php echo esc_html($over_ons_link['title']); ?>"><?php echo esc_html($over_ons_link['title']); ?></span>
+                                        </a>
+                                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionParent">
+                                            <ul class="">
+                                                <?php
+                                                $mmi_about_us = get_field('mmi_about_us', 'option');
+                                                if ($mmi_about_us):
+                                                    foreach ($mmi_about_us as $itemau):
+                                                        $linkau = $itemau['mmia_link'];
+                                                        ?>
+                                                        <li class="">
+                                                            <a class="nav-link"
+                                                                href="<?php echo esc_url($linkau['url'] ?: '#'); ?>">
+                                                                <?php echo esc_html($linkau['title']); ?>
+                                                            </a>
+                                                        </li>
+                                                        <?php
+                                                    endforeach;
+                                                endif;
+                                                ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                             <!-- end -->
                             <li class="menu__inner--item">
                                 <?php if ($contact_ons_link): ?>
                                     <a href="<?php echo esc_url($contact_ons_link['url']); ?>"
@@ -484,7 +544,7 @@ $submenu_ai_services = get_field('submenu_ai_services', 'option');
                             <?php if ($menu_button_1): ?>
                                 <button data-bs-toggle="modal" data-id=""
                                     data-bs-target="<?php echo esc_url($menu_button_2['url']); ?>"
-                                    class="l__button l__button--border">Q<?php echo esc_html($menu_button_2['title']); ?></button>
+                                    class="l__button l__button--border"><?php echo esc_html($menu_button_2['title']); ?></button>
                             <?php endif; ?>
                         </div>
                     </div>
