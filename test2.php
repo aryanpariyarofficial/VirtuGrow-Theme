@@ -1078,3 +1078,24 @@ if ($top_header_menu) :
         </nav>
 <?php endif; ?>
     </header>
+
+
+
+
+    replace : $mmi_webdev to $mmi_ai_services
+$item to #itemz
+$mmiwd_image to $mmiais_image
+$mmiwd_title to $mmiais_title
+$mmiwd_link to $mmiais_link
+$mmiwd_desc to $mmiais_desc
+
+
+
+similary for this as well
+
+ replace : $mmi_webdev to $mmi_zakelijke_telefonie
+$item to #itemz
+$mmiwd_image to $mmizt_image
+$mmiwd_title to $mmizt_title
+$mmiwd_link to $mmizt_link
+$mmiwd_desc to $mmizt_desc

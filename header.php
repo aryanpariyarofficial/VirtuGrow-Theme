@@ -28,23 +28,28 @@ $menu_button_1 = get_field('menu_button_1', 'option');
 $menu_button_2 = get_field('menu_button_2', 'option');
 
 $mmi_webdev = get_field('mmi_webdev', 'option');
+$mmi_online_marketing = get_field('mmi_online_marketing', 'option');
+$mmi_zakelijke_telefonie = get_field('mmi_zakelijke_telefonie', 'option');
+$mmi_ai_services = get_field('mmi_ai_services', 'option');
+
+$submenu_webdevelopment = get_field('submenu_webdevelopment', 'option');
+$submenu_online_marketing = get_field('submenu_online_marketing', 'option');
+$submenu_zakelijke_telefonie = get_field('submenu_zakelijke_telefonie', 'option');
+$submenu_ai_services = get_field('submenu_ai_services', 'option');
 ?>
 
 <body <?php body_class(); ?>>
     <header class="header" id="myHeader">
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar__custom">
             <div class="l__container container-xxl">
                 <?php
                 $custom_logo_id = get_theme_mod('custom_logo');
                 $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
-
                 if ($logo): ?>
                     <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">
                         <img src="<?php echo esc_url($logo[0]); ?>" alt="<?php bloginfo('name'); ?>">
                     </a>
                 <?php endif; ?>
-
                 <div class="d-flex d-lg-none">
                     <a href="tel:0851304258" class="navbar-toggler ">
                         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/phone.png" alt="phone">
@@ -70,15 +75,10 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                 <img src="<?php echo esc_url($logo[0]); ?>" alt="<?php bloginfo('name'); ?>">
                             </a>
                         <?php endif; ?>
-
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
-
-
-
                     <div class="offcanvas-body">
-
                         <ul class="navbar-nav justify-content-lg-center menu__inner flex-grow-1">
                             <li class="menu__inner--item">
                                 <?php if ($home_link): ?>
@@ -88,194 +88,10 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                     </a>
                                 <?php endif; ?>
                             </li>
-
-                            <li class="menu__inner--item menu__dropdown d-none d-lg-none">
-                                <?php if ($wat_doen_wij_link): ?>
-                                    <a href="<?php echo esc_url($wat_doen_wij_link['url']); ?>"
-                                        class="menu__inner--item--link">
-                                        <span
-                                            data-hover="<?php echo esc_html($wat_doen_wij_link['title']); ?>"><?php echo esc_html($wat_doen_wij_link['title']); ?></span>
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </a>
-                                <?php endif; ?>
-                                <div class="submenu megamenu__normal">
-                                    <div class="accordion custom__accordion">
-                                        <div class="accordion__item">
-                                            <a class="accordion__title" href="javascript:void(0)">
-                                                WebDevelopment
-                                                <i class="fas fa-chevron-down"></i>
-                                            </a>
-                                            <div class="accordion__content menu__drop" style="display: none;">
-
-
-                                                <div class="">
-                                                    <a href="/services/website-design-in-nepal">
-                                                        <div class="textbox__type">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mask_group.svg"
-                                                                alt="">
-                                                            <div>
-                                                                <h5>Website Development</h5>
-                                                                <p>Specialized Custom Website Development Services</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-
-                                                <div class="">
-                                                    <a href="/services/mobile-app-development">
-                                                        <div class="textbox__type">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mask_group_D3xoMhf.svg"
-                                                                alt="">
-                                                            <div>
-                                                                <h5>App Development</h5>
-                                                                <p>Building Custom Apps for Seamless User Experience</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-
-                                                <div class="">
-                                                    <a href="/services/system-software-development">
-                                                        <div class="textbox__type">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mask_group_BKktSAc.svg"
-                                                                alt="">
-                                                            <div>
-                                                                <h5>System/Software Development</h5>
-                                                                <p>Cutting-edge System/Software Development Solutions
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-
-                                                <div class="">
-                                                    <a href="/services/ui-ux-design">
-                                                        <div class="textbox__type">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mask_group_kx0r4jm.svg"
-                                                                alt="">
-                                                            <div>
-                                                                <h5>UI/UX</h5>
-                                                                <p>Design UI/UX interfaces for effortless user
-                                                                    interaction</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion__item">
-                                            <a class="accordion__title" href="/online-marketing">
-                                                Online Marketing
-                                                <i class="fas fa-chevron-down"></i>
-                                            </a>
-                                            <div class="accordion__content menu__drop" style="display: none">
-
-
-                                                <div class="">
-                                                    <a href="/services/seo-in-nepal">
-                                                        <div class="textbox__type">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mask_group_n0wKmHg.svg"
-                                                                alt="">
-                                                            <div>
-                                                                <h5>Search Engine Optimization (SEO)</h5>
-                                                                <p>Enhance Search Engine Ranking with Effective SEO</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-
-                                                <div class="">
-                                                    <a href="/services/social-media-marketing">
-                                                        <div class="textbox__type">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mask_group_gAGxJ1v.svg"
-                                                                alt="">
-                                                            <div>
-                                                                <h5>Social Media Marketing (SMM)</h5>
-                                                                <p>Boost online presence, engage audience</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-
-                                                <div class="">
-                                                    <a href="/services/graphics-design">
-                                                        <div class="textbox__type">
-                                                            <img src="" alt="">
-                                                            <div>
-                                                                <h5>Graphic Design</h5>
-                                                                <p>Bringing Ideas to Visual Life</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-
-                                                <div class="">
-                                                    <a href="/services/content-writing">
-                                                        <div class="textbox__type">
-                                                            <img src="" alt="">
-                                                            <div>
-                                                                <h5>Content Writing</h5>
-                                                                <p>Creating Content that Resonates</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-
-                                                <div class="">
-                                                    <a href="/services/google-ads-ppc-marketing">
-                                                        <div class="textbox__type">
-                                                            <img src="" alt="">
-                                                            <div>
-                                                                <h5>Pay Per Click</h5>
-                                                                <p>Optimized Pay-Per-Click Campaigns</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-
-                                                <div class="">
-                                                    <a href="/services/digital-marketing">
-                                                        <div class="textbox__type">
-                                                            <img src="" alt="">
-                                                            <div>
-                                                                <h5>Digital Marketing</h5>
-                                                                <p>Designing Digital Paths That Echo with Audiences</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
                             <li class="menu__inner--item nav-item mb-0 d-lg-none">
                                 <div class="accordion accordion-flush" id="accordionParent">
                                     <div class="accordion-item">
                                         <?php if ($wat_doen_wij_link): ?>
-
                                             <a href="<?php echo esc_url($wat_doen_wij_link['url']); ?>"
                                                 class="menu__inner--item--link accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
@@ -288,15 +104,13 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                             data-bs-parent="#accordionParent">
                                             <!-- web development -->
                                             <div class="accordion-item-service">
-                                                <h3>WebDevelopment</h3>
+                                                <h3><?php echo esc_html($submenu_webdevelopment['title']); ?></h3>
                                                 <ul class="list">
                                                     <?php
                                                     $mmi_webdev = get_field('mmi_webdev', 'option');
                                                     if ($mmi_webdev):
                                                         foreach ($mmi_webdev as $item):
-
                                                             ?>
-
                                                             <li>
                                                                 <a
                                                                     href="<?php echo esc_url($item['mmiwd_link']['url'] ?: '#'); ?>">
@@ -304,206 +118,99 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                                                         <img src="<?php echo esc_url($item['mmiwd_image']['url']); ?>"
                                                                             alt="<?php echo esc_attr($item['mmiwd_image']['alt']); ?>">
                                                                     <?php endif; ?>
-
                                                                     <?php echo esc_html($item['mmiwd_title']); ?>
-
                                                                 </a>
                                                             </li>
-
                                                             <?php
                                                         endforeach;
                                                     endif;
                                                     ?>
-
                                                 </ul>
                                             </div>
                                             <!-- online marketing -->
                                             <div class="accordion-item-service">
-                                                <h3>Online Marketing</h3>
+                                                <h3><?php echo esc_html($submenu_online_marketing['title']); ?></h3>
                                                 <ul class="list">
-
-
-                                                    <li>
-                                                        <a href="/socialmedia-marketing">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/SEO_analytics_team-amico.svg"
-                                                                alt="">
-                                                            Socialmedia Marketing
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/search-engine-advertising">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mobile_Marketing-pana.svg"
-                                                                alt="">
-                                                            Search Engine Advertising
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/search-engine-optimalisation">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Website_Creator-pana.svg"
-                                                                alt="Graphic Design Service.">
-                                                            Search Engine Optimalisation
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/social-media-planner">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Blog_post-bro.svg"
-                                                                alt="">
-                                                            Social Media Planner
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/marketings-rapport">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Revenue-pana.svg"
-                                                                alt="">
-                                                            Marketings Rapport
-                                                        </a>
-                                                    </li>
-
-
-
-
-
+                                                    <?php
+                                                    $mmi_online_marketing = get_field('mmi_online_marketing', 'option');
+                                                    if ($mmi_online_marketing):
+                                                        foreach ($mmi_online_marketing as $itemo):
+                                                            ?>
+                                                            <li>
+                                                                <a
+                                                                    href="<?php echo esc_url($itemo['mmiom_link']['url'] ?: '#'); ?>">
+                                                                    <?php if ($itemo['mmiom_image']): ?>
+                                                                        <img src="<?php echo esc_url($itemo['mmiom_image']['url']); ?>"
+                                                                            alt="<?php echo esc_attr($itemo['mmiom_image']['alt']); ?>">
+                                                                    <?php endif; ?>
+                                                                    <?php echo esc_html($itemo['mmiom_title']); ?>
+                                                                </a>
+                                                            </li>
+                                                            <?php
+                                                        endforeach;
+                                                    endif;
+                                                    ?>
                                                 </ul>
                                             </div>
                                             <!-- Zakelijke Telefonie -->
                                             <div class="accordion-item-service">
-                                                <h3>Zakelijke Telefonie</h3>
+                                                <h3> <?php echo esc_html($submenu_zakelijke_telefonie['title']); ?></h3>
                                                 <ul class="list">
+                                                    <?php
+                                                    $mmi_zakelijke_telefonie = get_field('mmi_zakelijke_telefonie', 'option');
+                                                    if ($mmi_zakelijke_telefonie):
+                                                        foreach ($mmi_zakelijke_telefonie as $itemz):
+                                                            ?>
+                                                            <li>
+                                                                <a
+                                                                    href="<?php echo esc_url($itemz['mmizt_link']['url'] ?: '#'); ?>">
+                                                                    <?php if ($itemz['mmizt_image']): ?>
+                                                                        <img src="<?php echo esc_url($itemz['mmizt_image']['url']); ?>"
+                                                                            alt="<?php echo esc_attr($itemz['mmizt_image']['alt']); ?>">
+                                                                    <?php endif; ?>
 
-
-                                                    <li>
-                                                        <a href="/socialmedia-marketing">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/SEO_analytics_team-amico.svg"
-                                                                alt="">
-                                                            Socialmedia Marketing
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/search-engine-advertising">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mobile_Marketing-pana.svg"
-                                                                alt="">
-                                                            Search Engine Advertising
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/search-engine-optimalisation">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Website_Creator-pana.svg"
-                                                                alt="Graphic Design Service.">
-                                                            Search Engine Optimalisation
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/social-media-planner">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Blog_post-bro.svg"
-                                                                alt="">
-                                                            Social Media Planner
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/marketings-rapport">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Revenue-pana.svg"
-                                                                alt="">
-                                                            Marketings Rapport
-                                                        </a>
-                                                    </li>
-
-
-
-
-
+                                                                    <?php echo esc_html($itemz['mmizt_title']); ?>
+                                                                </a>
+                                                            </li>
+                                                            <?php
+                                                        endforeach;
+                                                    endif;
+                                                    ?>
                                                 </ul>
                                             </div>
                                             <!-- AI Services -->
                                             <div class="accordion-item-service">
-                                                <h3>AI Services</h3>
+                                                <h3> <?php echo esc_html($submenu_ai_services['title']); ?></h3>
                                                 <ul class="list">
+                                                    <?php
+                                                    $mmi_ai_services = get_field('mmi_ai_services', 'option');
+                                                    if ($mmi_ai_services):
+                                                        foreach ($mmi_ai_services as $itema):
+                                                            ?>
+                                                            <li>
+                                                                <a
+                                                                    href="<?php echo esc_url($itema['mmiais_link']['url'] ?: '#'); ?>">
+                                                                    <?php if ($itema['mmiais_image']): ?>
+                                                                        <img src="<?php echo esc_url($itema['mmiais_image']['url']); ?>"
+                                                                            alt="<?php echo esc_attr($itema['mmiais_image']['alt']); ?>">
+                                                                    <?php endif; ?>
 
-
-                                                    <li>
-                                                        <a href="/socialmedia-marketing">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/SEO_analytics_team-amico.svg"
-                                                                alt="">
-                                                            Socialmedia Marketing
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/search-engine-advertising">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mobile_Marketing-pana.svg"
-                                                                alt="">
-                                                            Search Engine Advertising
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/search-engine-optimalisation">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Website_Creator-pana.svg"
-                                                                alt="Graphic Design Service.">
-                                                            Search Engine Optimalisation
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/social-media-planner">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Blog_post-bro.svg"
-                                                                alt="">
-                                                            Social Media Planner
-                                                        </a>
-                                                    </li>
-
-
-
-                                                    <li>
-                                                        <a href="/marketings-rapport">
-                                                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Revenue-pana.svg"
-                                                                alt="">
-                                                            Marketings Rapport
-                                                        </a>
-                                                    </li>
-
-
-
-
-
+                                                                    <?php echo esc_html($itema['mmiais_title']); ?>
+                                                                </a>
+                                                            </li>
+                                                            <?php
+                                                        endforeach;
+                                                    endif;
+                                                    ?>
                                                 </ul>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </li>
                             <li class=" menu__inner--item d-none d-lg-inline-block" style="position:static;">
                                 <?php if ($wat_doen_wij_link): ?>
-
                                     <a href="<?php echo esc_url($wat_doen_wij_link['url']); ?>"
                                         class="menu__inner--item--link">
                                         <span
@@ -514,7 +221,6 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                 <div class="megamenu">
                                     <div class="menu__drop">
                                         <?php $mmitems = get_field('mmitems', 'option');
-
                                         if ($mmitems): ?>
                                             <div class="box" id="boxid">
                                                 <?php foreach ($mmitems as $index => $item):
@@ -534,18 +240,14 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                                 <?php endforeach; ?>
                                             </div>
                                         <?php endif; ?>
-
                                         <div class="textbox">
-
                                             <!-- WebDevelopment -->
                                             <div class="textboxcontainer active">
                                                 <div class="row">
                                                     <?php
                                                     $mmi_webdev = get_field('mmi_webdev', 'option');
                                                     if ($mmi_webdev):
-                                                        foreach ($mmi_webdev as $item):
-
-                                                            ?>
+                                                        foreach ($mmi_webdev as $item):  ?>
                                                             <div class="col-md-6">
                                                                 <a
                                                                     href="<?php echo esc_url($item['mmiwd_link']['url'] ?: '#'); ?>">
@@ -572,270 +274,107 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                                     ?>
                                                 </div>
                                             </div>
-
                                             <!-- Online Marketing -->
                                             <div class="textboxcontainer">
                                                 <div class="row">
-
-                                                    <!-- Socialmedia Marketing -->
-                                                    <div class="col-md-6">
-                                                        <a href="/socialmedia-marketing">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/SEO_analytics_team-amico.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5>Socialmedia Marketing</h5>
-                                                                    <p>We versterken uw merk op platforms zoals
-                                                                        Facebook, Instagram en LinkedIn met doelgerichte
-                                                                        campagnes.</p>
-                                                                </div>
+                                                    <?php
+                                                    $mmi_online_marketing = get_field('mmi_online_marketing', 'option');
+                                                    if ($mmi_online_marketing):
+                                                        foreach ($mmi_online_marketing as $itemo):
+                                                            ?>
+                                                            <div class="col-md-6">
+                                                                <a
+                                                                    href="<?php echo esc_url($itemo['mmiom_link']['url'] ?: '#'); ?>">
+                                                                    <div class="textbox__type">
+                                                                        <?php if ($itemo['mmiom_image']): ?>
+                                                                            <img src="<?php echo esc_url($itemo['mmiom_image']['url']); ?>"
+                                                                                alt="<?php echo esc_attr($itemo['mmiom_image']['alt']); ?>">
+                                                                        <?php endif; ?>
+                                                                        <div>
+                                                                            <?php if ($itemo['mmiom_title']): ?>
+                                                                                <h5><?php echo esc_html($itemo['mmiom_title']); ?>
+                                                                                </h5>
+                                                                            <?php endif; ?>
+                                                                            <?php if ($itemo['mmiom_desc']): ?>
+                                                                                <p><?php echo esc_html($itemo['mmiom_desc']); ?></p>
+                                                                            <?php endif; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                        </a>
-                                                    </div>
-
-
-                                                    <!-- Search Engine Advertising -->
-                                                    <div class="col-md-6">
-                                                        <a href="/search-engine-advertising">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mobile_Marketing-pana.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5>Search Engine Advertising</h5>
-                                                                    <p>Trek direct verkeer aan via betaalde
-                                                                        zoekadvertenties op Google en andere
-                                                                        zoekmachines.</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
-
-                                                    <!-- Search Engine Optimalisation -->
-                                                    <div class="col-md-6">
-                                                        <a href="/search-engine-optimalisation">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Website_Creator-pana.svg"
-                                                                    alt="Graphic Design Service.">
-                                                                <div>
-                                                                    <h5>Search Engine Optimalisation</h5>
-                                                                    <p>Verbeter uw vindbaarheid in zoekmachines met
-                                                                        doordachte SEO-technieken en
-                                                                        contentoptimalisatie.</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
-
-                                                    <!-- Social Media Planner -->
-                                                    <div class="col-md-6">
-                                                        <a href="/social-media-planner">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Blog_post-bro.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5>Social Media Planner</h5>
-                                                                    <p>Plan en beheer al uw sociale media content
-                                                                        overzichtelijk en efficiënt met één tool.</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
-
-                                                    <!-- Marketings Rapport -->
-                                                    <div class="col-md-6">
-                                                        <a href="/marketings-rapport">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Revenue-pana.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5>Marketings Rapport</h5>
-                                                                    <p>Ontvang duidelijke en meetbare rapporten over de
-                                                                        prestaties van uw marketingcampagnes.</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
+                                                            <?php
+                                                        endforeach;
+                                                    endif;
+                                                    ?>
                                                 </div>
                                             </div>
                                             <!-- Zakelijke Telefonie -->
                                             <div class="textboxcontainer">
                                                 <div class="row">
-
-                                                    <!-- 085 Nummer -->
-                                                    <div class="col-md-6">
-                                                        <a href="/085-nummer">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/SEO_analytics_team-amico.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5> 085 Nummer</h5>
-                                                                    <p>Landelijke uitstraling met één centraal
-                                                                        bereikbaar nummer.</p>
-                                                                </div>
+                                                    <?php
+                                                    $mmi_zakelijke_telefonie = get_field('mmi_zakelijke_telefonie', 'option');
+                                                    if ($mmi_zakelijke_telefonie):
+                                                        foreach ($mmi_zakelijke_telefonie as $itemz):
+                                                            ?>
+                                                            <div class="col-md-6">
+                                                                <a
+                                                                    href="<?php echo esc_url($itemz['mmizt_link']['url'] ?: '#'); ?>">
+                                                                    <div class="textbox__type">
+                                                                        <?php if ($itemz['mmizt_image']): ?>
+                                                                            <img src="<?php echo esc_url($itemz['mmizt_image']['url']); ?>"
+                                                                                alt="<?php echo esc_attr($itemz['mmizt_image']['alt']); ?>">
+                                                                        <?php endif; ?>
+                                                                        <div>
+                                                                            <?php if ($itemz['mmizt_title']): ?>
+                                                                                <h5><?php echo esc_html($itemz['mmizt_title']); ?>
+                                                                                </h5>
+                                                                            <?php endif; ?>
+                                                                            <?php if ($itemz['mmizt_desc']): ?>
+                                                                                <p><?php echo esc_html($itemz['mmizt_desc']); ?></p>
+                                                                            <?php endif; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                        </a>
-                                                    </div>
-
-
-                                                    <!-- Regionaal Nummer -->
-                                                    <div class="col-md-6">
-                                                        <a href="/regionaal-nummer">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mobile_Marketing-pana.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5>Regionaal Nummer</h5>
-                                                                    <p>Boost online presence, engage audience</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
-
-                                                    <!-- AI Voicecalling -->
-                                                    <div class="col-md-6">
-                                                        <a href="/ai-voicecalling">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Website_Creator-pana.svg"
-                                                                    alt="Graphic Design Service.">
-                                                                <div>
-                                                                    <h5> AI Voicecalling</h5>
-                                                                    <p>Laat AI inkomende gesprekken efficiënt
-                                                                        beantwoorden en afhandelen.</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
-
-                                                    <!-- Zakelijke e-mail adressen -->
-                                                    <div class="col-md-6">
-                                                        <a href="/zakelijke-e-mail-adressen">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Blog_post-bro.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5>Zakelijke e-mail adressen</h5>
-                                                                    <p>Professionele uitstraling met gepersonaliseerde
-                                                                        e-maildomeinen.</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                            <?php
+                                                        endforeach;
+                                                    endif;
+                                                    ?>
                                                 </div>
                                             </div>
                                             <!-- AI Services -->
                                             <div class="textboxcontainer">
                                                 <div class="row">
-
-                                                    <!-- Ai Mogelijkheden -->
-                                                    <div class="col-md-6">
-                                                        <a href="/ai-mogelijkheden">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/SEO_analytics_team-amico.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5> Ai Mogelijkheden</h5>
-                                                                    <p>Onze AI-mogelijkheden helpen bedrijven
-                                                                        efficiënter werken en</p>
-                                                                </div>
+                                                    <?php
+                                                    $mmi_ai_services = get_field('mmi_ai_services', 'option');
+                                                    if ($mmi_ai_services):
+                                                        foreach ($mmi_ai_services as $itema):
+                                                            ?>
+                                                            <div class="col-md-6">
+                                                                <a
+                                                                    href="<?php echo esc_url($itema['mmiais_link']['url'] ?: '#'); ?>">
+                                                                    <div class="textbox__type">
+                                                                        <?php if ($itema['mmiais_image']): ?>
+                                                                            <img src="<?php echo esc_url($itema['mmiais_image']['url']); ?>"
+                                                                                alt="<?php echo esc_attr($itema['mmiais_image']['alt']); ?>">
+                                                                        <?php endif; ?>
+                                                                        <div>
+                                                                            <?php if ($itema['mmiais_title']): ?>
+                                                                                <h5><?php echo esc_html($itema['mmiais_title']); ?>
+                                                                                </h5>
+                                                                            <?php endif; ?>
+                                                                            <?php if ($itema['mmiais_desc']): ?>
+                                                                                <p><?php echo esc_html($itema['mmiais_desc']); ?>
+                                                                                </p>
+                                                                            <?php endif; ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                        </a>
-                                                    </div>
-
-
-                                                    <!-- AI Klantenservice -->
-                                                    <div class="col-md-6">
-                                                        <a href="/ai-klantenservice">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Mobile_Marketing-pana.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5>AI Klantenservice</h5>
-                                                                    <p>Met AI-klantenservice bieden we snelle,
-                                                                        nauwkeurige en 24/7
-                                                                        ondersteuning om de klanttevredenheid te
-                                                                        verbeteren.</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
-
-                                                    <!-- AI Leadgenerator -->
-                                                    <div class="col-md-6">
-                                                        <a href="/ai-leadgenerator">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Website_Creator-pana.svg"
-                                                                    alt="Graphic Design Service.">
-                                                                <div>
-                                                                    <h5>AI Leadgenerator</h5>
-                                                                    <p>Onze AI-gedreven leadgenerator identificeert
-                                                                        potentiële klanten
-                                                                        automatisch, zodat uw verkoopteam zich kan
-                                                                        richten op
-                                                                        conversie.</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-
-
-                                                    <!-- AI Afsprakenmanager -->
-                                                    <div class="col-md-6">
-                                                        <a href="/ai-afsprakenmanager">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Blog_post-bro.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5>AI Afsprakenmanager</h5>
-                                                                    <p>De AI-afsprakenmanager plant en beheert
-                                                                        automatisch
-                                                                        klantafspraken, waardoor uw team tijd bespaart
-                                                                        en niets over het
-                                                                        hoofd ziet.</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <!-- AI Reputatie Manager -->
-                                                    <div class="col-md-6">
-                                                        <a href="/ai-reputatie-manager">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Blog_post-bro.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5>AI Reputatie Manager</h5>
-                                                                    <p>De AI-afsprakenmanager plant en beheert
-                                                                        automatisch
-                                                                        klantafspraken, waardoor uw team tijd bespaart
-                                                                        en niets over het
-                                                                        hoofd ziet.</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <!-- AI Automatiseringen -->
-                                                    <div class="col-md-6">
-                                                        <a href="/ai-automatiseringen">
-                                                            <div class="textbox__type">
-                                                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/images/Blog_post-bro.svg"
-                                                                    alt="">
-                                                                <div>
-                                                                    <h5>AI Automatiseringen</h5>
-                                                                    <p>De AI-afsprakenmanager plant en beheert
-                                                                        automatisch
-                                                                        klantafspraken, waardoor uw team tijd bespaart
-                                                                        en niets over het
-                                                                        hoofd ziet.</p>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                            <?php
+                                                        endforeach;
+                                                    endif;
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -852,20 +391,25 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                 <?php endif; ?>
                                 <div class="submenu megamenu__normal">
                                     <ul class="submenu__list">
-                                        <!-- <li class="item">
-                                            <a href="/pricing/seo/">
-                                                SEO Package
-                                                <span>Typically offer a range of services including keyword
-                                                    research</span>
-                                            </a>
-                                        </li> -->
-                                        <li class="item">
-                                            <a href="/social-media-pricing">
-                                                Social Media Package
-                                                <span>Typically offer a range of services tailored to clients' needs,
-                                                    including content creation</span>
-                                            </a>
-                                        </li>
+                                        <?php
+                                        $mmi_pricing = get_field('mmi_pricing', 'option');
+                                        if ($mmi_pricing):
+                                            foreach ($mmi_pricing as $itemp):
+                                                $link = $itemp['mmip_link'];
+                                                $desc = $itemp['mmip_desc'];
+                                                ?>
+                                                <li class="item">
+                                                    <a href="<?php echo esc_url($link['url'] ?: '#'); ?>">
+                                                        <?php echo esc_html($link['title']); ?>
+                                                        <?php if ($desc): ?>
+                                                            <span><?php echo esc_html($desc); ?></span>
+                                                        <?php endif; ?>
+                                                    </a>
+                                                </li>
+                                                <?php
+                                            endforeach;
+                                        endif;
+                                        ?>
                                     </ul>
                                 </div>
                             </li>
@@ -882,13 +426,22 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                                         <div id="flush-collapseThree" class="accordion-collapse collapse"
                                             data-bs-parent="#accordionParent">
                                             <ul class="">
-                                                <!-- <li class="">
-                                                    <a class="nav-link" href="/pricing/seo/">SEO Package</a>
-                                                </li> -->
-                                                <li class="">
-                                                    <a class="nav-link" href="/social-media-pricing/"> Social Media
-                                                        Package</a>
-                                                </li>
+                                                <?php
+                                                $mmi_pricing = get_field('mmi_pricing', 'option');
+                                                if ($mmi_pricing):
+                                                    foreach ($mmi_pricing as $itemp):
+                                                        $link = $itemp['mmip_link'];
+                                                        ?>
+                                                        <li class="">
+                                                            <a class="nav-link"
+                                                                href="<?php echo esc_url($link['url'] ?: '#'); ?>">
+                                                                <?php echo esc_html($link['title']); ?>
+                                                            </a>
+                                                        </li>
+                                                        <?php
+                                                    endforeach;
+                                                endif;
+                                                ?>
                                             </ul>
                                         </div>
                                     </div>
@@ -938,5 +491,4 @@ $mmi_webdev = get_field('mmi_webdev', 'option');
                 </div>
             </div>
         </nav>
-
     </header>
