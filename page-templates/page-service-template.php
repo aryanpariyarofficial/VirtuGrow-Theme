@@ -1,5 +1,7 @@
 <?php
-/* Template Name: Webshop Development */
+/*
+Template Name: Service Template
+*/
 get_header();
 
 // Service Hero Section
@@ -10,6 +12,9 @@ $hero_main_image = get_field('hero_main_image');
 $hero_icon_group = get_field('hero_icon_group');
 // Service Info Section 
 $service_infos = get_field('service_infos');
+
+$page_slug = get_post_field('post_name', get_the_ID());
+
 ?>
 
 <div style="min-height: 50vh">

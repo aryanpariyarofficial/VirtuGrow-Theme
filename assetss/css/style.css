@@ -6945,7 +6945,7 @@ main[role=progressbar]::before {
 }
 .subscription__form .right-side {
   position: relative;
-  padding: 2rem;
+  padding: 0px !important;
 }
 .subscription__form .right-side .close-button {
   position: absolute;
