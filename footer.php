@@ -216,6 +216,8 @@ $connect_items = get_field('connect_with_us', 'option');
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/intlTelInput.css">
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assetss/js/intlTelInput-jquery.min.js"></script>
+<script src="https://link.virtugrow.nl/js/form_embed.js"></script>
+
 <script>
   // Enquiry Model
   var dialCode = "";

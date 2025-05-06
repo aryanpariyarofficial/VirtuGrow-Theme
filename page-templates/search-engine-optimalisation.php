@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Website Development */
+/* Template Name: Search Engine Optimalisation */
 get_header();
 
 // Service Hero Section

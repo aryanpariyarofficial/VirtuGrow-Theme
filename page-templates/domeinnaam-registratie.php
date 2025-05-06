@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Website Development */
+/* Template Name: Domeinnaam Registratie */
 get_header();
 
 // Service Hero Section

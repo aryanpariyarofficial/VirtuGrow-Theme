@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Website Development */
+/* Template Name: Social Media Planner */
 get_header();
 
 // Service Hero Section

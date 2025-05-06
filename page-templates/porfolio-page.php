@@ -13,7 +13,7 @@ Template Name: Porfolio Page
                 <h6>Our Portfolio</h6>
                 <h1 class="title">Some of our <span>Recent Work</span></h1>
             </div>
-            <div class="tabs__head" bis_skin_checked="1">
+            <!-- <div class="tabs__head" bis_skin_checked="1">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
                         <a href="https://softbenz.com/portfolio?category=all&amp;child=all" class="l__button l__button--border active">All</a>
@@ -41,7 +41,7 @@ Template Name: Porfolio Page
 
                 
 
-            </div>
+            </div> -->
             <div class="tab-content tabs__body px-3 px-lg-4" bis_skin_checked="1">
                 <div class="tab-pane fade show active" bis_skin_checked="1">
                     <div class="tabs__body--content" bis_skin_checked="1">
