@@ -3939,13 +3939,21 @@ main[role=progressbar]::before {
 .choose-two {
   background-image: none;
 }
-.choose-two .row .col:nth-child(2) .choose__card {
+.choose-two .row .col:nth-child(2) .choose__card,
+.choose-two .row .col:nth-child(4) .choose__card,
+.choose-two .row .col:nth-child(6) .choose__card {
   background-color: #22BE7D;
 }
+
+.choose-two .row .col:nth-child(2) .choose__card .choose__card--content h3,
 .choose-two .row .col:nth-child(2) .choose__card .choose__card--content p,
-.choose-two .row .col:nth-child(2) .choose__card .choose__card--content h3 {
+.choose-two .row .col:nth-child(4) .choose__card .choose__card--content h3,
+.choose-two .row .col:nth-child(4) .choose__card .choose__card--content p,
+.choose-two .row .col:nth-child(6) .choose__card .choose__card--content h3,
+.choose-two .row .col:nth-child(6) .choose__card .choose__card--content p {
   color: #ffffff;
 }
+
 .choose__industry {
   background-image: none;
 }
