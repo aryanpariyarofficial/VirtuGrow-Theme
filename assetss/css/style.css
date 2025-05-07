@@ -167,13 +167,13 @@ input[type=number] {
   font-weight: 500;
 }
 .l__button--border {
-  border-color: #5dd362;
-  color: #5dd362;
+  border-color: #22BE7D;
+  color: #22BE7D;
   background: rgba(93, 211, 98, 0.1);
   border-radius: 1.4375rem;
 }
 .l__button--border:hover {
-  background-color: #5dd362;
+  background-color: #22BE7D;
   color: #ffffff;
 }
 .l__button--border.glow {
@@ -6612,7 +6612,7 @@ main[role=progressbar]::before {
   width: 4px;
   height: 94%;
   transform: translateY(-50%);
-  background-color: #22BE7D;
+  background-color: #3d358a;
 }
 .cta__wrap .heading .text-color-primary {
   color: #22BE7D;
@@ -6882,7 +6882,7 @@ main[role=progressbar]::before {
 .package .best-value {
   height: 40px;
   width: 100%;
-  background-color: #22BE7D;
+  background-color: #3d358a;
   position: absolute;
   top: -2.5rem;
   left: 0;
