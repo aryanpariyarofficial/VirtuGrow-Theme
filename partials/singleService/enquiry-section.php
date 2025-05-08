@@ -7,6 +7,7 @@ $enquiry_steps = get_field('enquiry-steps');
 $enquiry_form_title = get_field('enquiry_form_title');
 $enquiry_form_desc = get_field('enquiry_form_desc');
 $enquiry_form_iframe = get_field('enquiry_form_ifram_code');
+$single_service_enquiry_from = get_field('single_service_enquiry_from', 'option');
 ?>
 
 <!-- Enquiry -->
@@ -68,9 +69,16 @@ $enquiry_form_iframe = get_field('enquiry_form_ifram_code');
                             <?php endif; ?>
                         </h3>
                     <?php endif; ?>
-                    <?php if ($enquiry_form_iframe): ?>
-                        <?php echo $enquiry_form_iframe; ?>
+                    <?php if (is_page('website-development')): ?>
+                        <?php if ($enquiry_form_iframe): ?>
+                            <?php echo $enquiry_form_iframe; ?>
+                        <?php endif; ?>
+                        <?php else: ?>
+                        <?php if ($single_service_enquiry_from): ?>
+                            <?php echo $single_service_enquiry_from; ?>
+                        <?php endif; ?>
                     <?php endif; ?>
+                   
                 </div>
             </div>
         </div>
