@@ -25,7 +25,7 @@ $iframe_link = get_field('iframe_code');
                         <div class="col-lg-7">
                             <h2 class="title"><?php the_field('hero_title'); ?></h2>
                             <h6 class="subtitle"><?php the_field('hero_subtitle'); ?></h6>
-                            <?php echo do_shortcode(get_field('contact_form_shortcode')); ?>
+                            <?php echo get_field('contact_form_shortcode'); ?>
                         </div>
                         <div class="col-lg-5">
                             <div class="contact__form--img d-none d-lg-block">

@@ -44,6 +44,9 @@
     <!-- aos animation -->
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/animate.min.css">
 
+    <!-- gohighlevel form preload  -->
+    <link rel="preload" href="https://link.virtugrow.nl/js/form_embed.js" as="script">
+
     <!-- global css -->
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assetss/css/style.css">
 
