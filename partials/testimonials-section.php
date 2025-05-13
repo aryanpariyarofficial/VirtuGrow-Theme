@@ -19,7 +19,7 @@ $testimonials_code = get_field('testimonials_code1', 'option');
                 </div>
 
                 <?php if ($testimonials_code): ?>
-                    <?php echo do_shortcode($testimonials_code); ?>
+                    <?php echo $testimonials_code; ?>
                 <?php endif; ?>
             </div>
         </div>
